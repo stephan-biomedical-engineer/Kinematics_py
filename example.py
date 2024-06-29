@@ -4,6 +4,7 @@ from inversekinematics import InverseKinematics
 
 def main():
     # Definição das juntas do manipulador, com os parâmetros de Denavit-Hartenberg
+    # d, a, theta, alpha
     Base = Joint(0.5, 0.2, 0, -90)
     Shoulder = Joint(0, 0.5, 45, 0)
     Elbow = Joint(0, 0.3, 0, -90)
