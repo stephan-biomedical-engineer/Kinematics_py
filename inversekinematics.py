@@ -3,11 +3,15 @@ from dh import Joint, ForwardKinematicsDH
 
 
 class InverseKinematics:
-    def __init__(self, fk, max_iterations=1000, tolerance=1e-6):
+    def __init__(self, fk, max_iterations=1000, tolerance=1e-6, error_count=0):
         self.fk = fk
         self.max_iterations = max_iterations
         self.tolerance = tolerance
+        self.error_count = error_count
     
+    def error_Counter(self):
+        return print("A quantidade de tentativas foi: ",self.error_count)
+
     def compute_ik(self, desired_position):
         current_joint_angles = np.array([joint.theta for joint in self.fk.joints])
         
@@ -19,6 +23,10 @@ class InverseKinematics:
             
             if np.linalg.norm(error) < self.tolerance:
                 break
+            else:
+                self.error_count += 1
+                if self.error_count > self.max_iterations:
+                    raise Exception("Não foi possível encontrar uma solução.")
             
             J = self.fk.compute_jacobian()
             
