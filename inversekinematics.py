@@ -3,14 +3,14 @@ from dh import Joint, ForwardKinematicsDH
 
 
 class InverseKinematics:
-    def __init__(self, fk, max_iterations=1000, tolerance=1e-6, error_count=0):
+    def __init__(self, fk, max_iterations=100, tolerance=1e-6, error_count=0):
         self.fk = fk
         self.max_iterations = max_iterations
         self.tolerance = tolerance
         self.error_count = error_count
     
     def error_Counter(self):
-        return print("A quantidade de tentativas foi: ",self.error_count)
+        return print("A quantidade de tentativas foram: ",self.error_count)
 
     def compute_ik(self, desired_position):
         current_joint_angles = np.array([joint.theta for joint in self.fk.joints])
