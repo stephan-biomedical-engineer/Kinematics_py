@@ -1,6 +1,7 @@
 import numpy as np
 from dh import Joint, ForwardKinematicsDH
 from inversekinematics import InverseKinematics
+import time 
 
 def main():
     # Definição das juntas do manipulador, com os parâmetros de Denavit-Hartenberg
@@ -24,4 +25,7 @@ def main():
     ik.error_Counter()
 
 if __name__ == "__main__":
+    inicio = time.time()
     main()
+    fim = time.time()
+    print("Tempo de execução: ", fim - inicio)
