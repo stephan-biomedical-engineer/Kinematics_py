@@ -31,4 +31,4 @@ T45 = dh_transform(theta5, alpha5, a5, d5)
 # Multiplicando as matrizes para obter T05 sem simplificação
 T05 = T01 * T12 * T23 * T34 * T45
 
-sp.pprint(T05)
+sp.pprint(T05[1:2][-1])
