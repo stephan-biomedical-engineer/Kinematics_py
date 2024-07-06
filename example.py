@@ -5,7 +5,7 @@ import time
 
 def main():
     # Definição das juntas do manipulador, com os parâmetros de Denavit-Hartenberg
-    # d (metros), a (metros), theta (graus), alpha (graus)
+    # d, a, theta (graus), alpha (graus)
     Base = Joint(3, 0, 0, -90)
     Shoulder = Joint(0, 2, -60, 0)
     Elbow = Joint(0, 2, 90, 0)
