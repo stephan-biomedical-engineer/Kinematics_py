@@ -35,6 +35,9 @@ class InverseKinematics:
             
             for i, joint in enumerate(self.fk.joints):
                 joint.theta = current_joint_angles[i]
+
+        for angles in range(len(current_joint_angles)):
+            current_joint_angles[angles] = round(current_joint_angles[angles], 2)
         
         return current_joint_angles
 

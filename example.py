@@ -6,15 +6,17 @@ import time
 def main():
     # Definição das juntas do manipulador, com os parâmetros de Denavit-Hartenberg
     # d (metros), a (metros), theta (graus), alpha (graus)
-    Base = Joint(0.5, 0.2, 0, -90)
-    Shoulder = Joint(0, 0.5, 45, 0)
-    Elbow = Joint(0, 0.3, 0, -90)
-    Wrist1 = Joint(0, 0.4, 90, 90)
-    Wrist2 = Joint(0, 0, 0, -90)
+    Base = Joint(3, 0, 0, -90)
+    Shoulder = Joint(0, 2, -60, 0)
+    Elbow = Joint(0, 2, 90, 0)
+    Wrist1 = Joint(0, 0, -30, 90)
+    Wrist2 = Joint(1.5, 0, 0, 0)
 
     # Cálculo da cinemática direta
     fk = ForwardKinematicsDH(Base, Shoulder, Elbow, Wrist1, Wrist2)
     
+    print("End effector = ", fk.compute_end_effector())
+
     # Cálculo da cinemática inversa
     ik = InverseKinematics(fk)
     desired_position = np.array([1, 0.5, 0.5])

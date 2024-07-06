@@ -29,6 +29,11 @@ class ForwardKinematicsDH:
         for joint in self.joints:
             transformation = joint.dh_matrix()
             end_effector_matrix = np.dot(end_effector_matrix, transformation)
+        
+        for line in range(len(end_effector_matrix)):
+            for column in range(len(end_effector_matrix[0])):
+                end_effector_matrix[line][column] = round(end_effector_matrix[line][column], 2)
+
         return end_effector_matrix
 
     def compute_jacobian(self):
